@@ -1,0 +1,120 @@
+.main {
+   @include display-flex;
+   flex-direction: column;
+}
+
+.sub-text {
+   position: relative;
+   width: 40rem;
+   background-color: $color-white;
+   border-radius: 0.5rem;
+   box-shadow: $box-shadow;
+   height: 0;
+   opacity: 0;
+   visibility: hidden;
+   transition: 0.2s all ease;
+   &.active {
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+   }
+   &__text {
+      color: $color-black;
+      padding: 1rem;
+   }
+   &::before {
+      content: "";
+      position: absolute;
+      width: 0.01rem;
+      height: 2rem;
+      top: -2rem;
+      left: 2.85rem;
+      background: $color-gray;
+   }
+   &__link {
+      text-transform: uppercase;
+      text-decoration: underline;
+      padding: 0.5rem;
+      color: $color-title;
+      position: relative;
+      &:not(:last-child) {
+         margin-right: 1rem;
+      }
+      &:not(:last-child)::before {
+         content: "";
+         position: absolute;
+         width: 0.2rem;
+         height: 2rem;
+         top: 14%;
+         background: #777;
+         left: 100%;
+      }
+   }
+   &__link:visited {
+      color: $color-gray;
+   }
+   &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem;
+      &__link {
+         border: none;
+      }
+   }
+}
+.title {
+   background-color: $bg-color;
+   display: inline-block;
+   border-radius: 0.5rem;
+   margin-bottom: 2rem;
+   vertical-align: top;
+
+   &__link {
+      display: block;
+      color: $color-title;
+      font-size: 3rem;
+      font-weight: 600;
+      padding: 1rem 1.5rem;
+      &:hover {
+         opacity: 0.5;
+      }
+   }
+}
+
+.icon,
+.icon::before,
+.icon::after {
+   height: 5rem;
+   width: 3rem;
+   border: solid;
+   border-width: 0.1rem 0;
+   border-radius: 0.2rem;
+   box-sizing: border-box;
+}
+.icon::before,
+.icon::after {
+   content: "";
+   position: absolute;
+   margin-top: -1px;
+}
+
+.icon {
+   vertical-align: top;
+   position: relative;
+   display: inline-block;
+   top: 3px;
+   left: 14px;
+   margin-right: 5rem;
+   transition: 0.4s all ease;
+   cursor: pointer;
+   &.active {
+      transform: rotate(30deg);
+   }
+   &::before {
+      transform: rotate(-60deg);
+   }
+   &::after {
+      transform: rotate(60deg);
+   }
+}
